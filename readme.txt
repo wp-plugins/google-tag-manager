@@ -28,7 +28,7 @@ This plugin makes it even easier to use Google Tag Manager, adding all the code 
 
 = Why isn't the output displaying? =
 
-Two possibilities: First, you haven't yet specified the ID in the admin panel, or second, your theme is missing a <?php wp_footer(); ?> call.
+Two possibilities: First, you haven't yet specified the ID in the admin panel, or second, your theme is missing a `<?php wp_footer(); ?>` call.
 
 == Changelog ==
 
