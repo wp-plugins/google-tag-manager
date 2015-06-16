@@ -3,7 +3,7 @@
 Plugin Name: Google Tag Manager
 Plugin URI: http://wordpress.org/extend/plugins/google-tag-manager/
 Description: This is an implementation of the new Tag Management system from Google. It adds a field to the existing General Settings page for the ID, and if specified, outputs the tag management javascript in the page footer.
-Version: 1.0
+Version: 1.0.1
 Author: George Stephanis
 Author URI: http://Stephanis.info
 License: GPLv2 or later
@@ -11,15 +11,15 @@ License: GPLv2 or later
 
 class google_tag_manager {
 
-	function go() {
+	public static function go() {
 		add_filter( 'admin_init', array( __CLASS__, 'register_fields' ) );
 		add_action( 'wp_footer', array( __CLASS__, 'print_tag' ) );
 	}
-	function register_fields() {
+	public static function register_fields() {
 		register_setting( 'general', 'google_tag_manager_id', 'esc_attr' );
 		add_settings_field( 'google_tag_manager_id', '<label for="google_tag_manager_id">' . __( 'Google Tag Manager ID' , 'google_tag_manager' ) . '</label>' , array( __CLASS__, 'fields_html') , 'general' );
 	}
-	function fields_html() {
+	public static function fields_html() {
 		?>
 		<input type="text" id="google_tag_manager_id" name="google_tag_manager_id" placeholder="ABC-DEFG" class="regular-text code" value="<?php echo get_option( 'google_tag_manager_id', '' ); ?>" />
 		<p class="description"><?php _e( 'The ID from Google&rsquo;s provided code (as emphasized):', 'google_tag_manager' ); ?><br />
@@ -27,7 +27,7 @@ class google_tag_manager {
 		<p class="description"><?php _e( 'You can get yours <a href="https://www.google.com/tagmanager/">here</a>!', 'google_tag_manager' ); ?></p>
 		<?php
 	}
-	function print_tag() {
+	public static function print_tag() {
 		if( ! $id = get_option( 'google_tag_manager_id', '' ) ) return;
 		?>
 <!-- Google Tag Manager -->

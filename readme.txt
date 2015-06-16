@@ -32,6 +32,9 @@ Two possibilities: First, you haven't yet specified the ID in the admin panel, o
 
 == Changelog ==
 
+= 1.0.1 =
+* Change to static methods to avoid errors in some versions of php
+
 = 1.0 =
 * Initial Public Release
 
